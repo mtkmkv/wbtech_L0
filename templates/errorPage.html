@@ -1,0 +1,23 @@
+{{ define "errorPage" }}
+<!DOCTYPE html>
+<html lang="en">
+{{ template "style" }}
+<title>{{ .Title }}</title>
+
+<body>
+	<div class="wrapper">
+		{{ template "header" }}
+		<div class="main">
+			<div class="home__button-wrapper">
+				<a href="/" class="home__button">Главная страница</a>
+			</div>
+			<div class="error__message-body">
+				<h1 class="error__message">Такой страницы не существует!</h1>
+			</div>
+		</div>
+		{{ template "footer" }}
+	</div>
+</body>
+
+</html>
+{{ end }}

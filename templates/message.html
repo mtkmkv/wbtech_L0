@@ -1,0 +1,87 @@
+{{ define "message" }}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>{{ .Title }}</title>
+	{{ template "style" }}
+</head>
+
+<body>
+	<div class="wrapper">
+		{{ template "header" }}
+		<div class="main">
+			<div class="home__button-wrapper">
+				<a href="/" class="home__button">Главная страница</a>
+			</div>
+			<div class="order__item order__item-mes">
+				<h1 class="title">Запись № {{ .Order.OrderUID }}:</h1>
+				<div class="message__body">
+					<div class="message__body-item">
+						<h2 class="item__subtitle">Main information:</h2>
+						<div class="item__property"><span>order_uid:</span>{{ .Order.OrderUID }}</div>
+						<div class="item__property"><span>track_number:</span> {{ .Order.TrackNumber }}</div>
+						<div class="item__property"><span>entry:</span> {{ .Order.Entry }}</div>
+						<div class="item__property"><span>locale:</span> {{ .Order.Locale }}</div>
+						<div class="item__property"><span>internal_signature:</span> {{ .Order.InternalSignature }}</div>
+						<div class="item__property"><span>customer_id:</span> {{ .Order.CustomerId }}</div>
+						<div class="item__property"><span>delivery_service:</span> {{ .Order.DeliveryService }}</div>
+						<div class="item__property"><span>shardkey:</span> {{ .Order.Shardkey }}</div>
+						<div class="item__property"><span>sm_id:</span> {{ .Order.SmId }}</div>
+						<div class="item__property"><span>date_created:</span> {{ .Order.DateCreated }}</div>
+						<div class="item__property"><span>oof_shred:</span> {{ .Order.OofShred }}</div>
+					</div>
+					<div class="message__body-item">
+						<h2 class="item__subtitle">Delivery:</h2>
+						<div class="item__property"><span>name:</span> {{ .Order.Delivery.Name }}</div>
+						<div class="item__property"><span>phone:</span> {{ .Order.Delivery.Phone }}</div>
+						<div class="item__property"><span>zip:</span> {{ .Order.Delivery.Zip }}</div>
+						<div class="item__property"><span>city:</span> {{ .Order.Delivery.City }}</div>
+						<div class="item__property"><span>address:</span> {{ .Order.Delivery.Address }}</div>
+						<div class="item__property"><span>region:</span> {{ .Order.Delivery.Region }}</div>
+						<div class="item__property"><span>email:</span> {{ .Order.Delivery.Email }}</div>
+					</div>
+					<div class="message__body-item">
+						<h2 class="item__subtitle">Payment:</h2>
+						<div class="item__property"><span>transaction:</span> {{ .Order.Payment.Transaction }}</div>
+						<div class="item__property"><span>request_id:</span> {{ .Order.Payment.RequestID }}</div>
+						<div class="item__property"><span>currency:</span> {{ .Order.Payment.Currency }}</div>
+						<div class="item__property"><span>provider:</span> {{ .Order.Payment.Provider }}</div>
+						<div class="item__property"><span>amount:</span> {{ .Order.Payment.Amount }}</div>
+						<div class="item__property"><span>payment_dt:</span> {{ .Order.Payment.PaymentDT }}</div>
+						<div class="item__property"><span>bank:</span> {{ .Order.Payment.Bank }}</div>
+						<div class="item__property"><span>delivery_cost:</span> {{ .Order.Payment.DeliveryCost }}</div>
+						<div class="item__property"><span>goods_total:</span> {{ .Order.Payment.GoodsTotal }}</div>
+						<div class="item__property"><span>custom_fee:</span> {{ .Order.Payment.CustomFee }}</div>
+					</div>
+					<div class="message__body-item">
+						<div class="items__body">
+							<h2 class="item__subtitle">Items:</h2>
+							{{ range .Order.Items}}
+							<div class="items__body-item">
+								<div class="item__property"><span>chrt_id:</span> {{ .ChrtID }}</div>
+								<div class="item__property"><span>track_number:</span> {{ .TrackNumber }}</div>
+								<div class="item__property"><span>price:</span> {{ .Price }}</div>
+								<div class="item__property"><span>rid:</span> {{ .Rid }}</div>
+								<div class="item__property"><span>name:</span> {{ .Name }}</div>
+								<div class="item__property"><span>sale:</span> {{ .Sale }}</div>
+								<div class="item__property"><span>size:</span> {{ .Size }}</div>
+								<div class="item__property"><span>total_price:</span> {{ .TotalPrice }}</div>
+								<div class="item__property"><span>nm_id:</span> {{ .NmID }}</div>
+								<div class="item__property"><span>brand:</span> {{ .Brand }}</div>
+								<div class="item__property"><span>status:</span> {{ .Status }}</div>
+							</div>
+							{{ end }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{ template "footer" }}
+	</div>
+</body>
+
+</html>
+{{ end }}

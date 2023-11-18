@@ -1,0 +1,47 @@
+{{ define "index" }}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>{{ .Title }}</title>
+	{{ template "style" }}
+</head>
+
+<body>
+	<div class="wrapper">
+		{{ template "header" }}
+		<div class="main">
+			<h1 class="title">Главная страница</h1>
+			<div class="order__items">
+				{{ range .List }}
+				<div class="order__item">
+					<div class="item__header">
+						<a href="message/{{ .OrderUID }}" class="item__link">
+							<span>order_uid:</span> {{ .OrderUID }}<br>
+						</a>
+						<span class="item__line"></span>
+					</div>
+					<div class="item__property"><span>track_number:</span> {{ .TrackNumber }}</div>
+					<div class="item__property"><span>entry:</span> {{ .Entry }}</div>
+					<div class="item__property"><span>delivery:</span> {{ .Delivery }}</div>
+					<div class="item__property"><span>payment:</span> {{ .Payment }}</div>
+					<div class="item__property"><span>items:</span> {{ .Items }}</div>
+					<div class="item__property"><span>locale:</span> {{ .Locale }}</div>
+					<div class="item__property"><span>internal_signature:</span> {{ .InternalSignature }}</div>
+					<div class="item__property"><span>customer_id:</span> {{ .CustomerId }}</div>
+					<div class="item__property"><span>delivery_service:</span> {{ .DeliveryService }}</div>
+					<div class="item__property"><span>shardkey:</span> {{ .Shardkey }}</div>
+					<div class="item__property"><span>sm_id:</span> {{ .SmId }}</div>
+					<div class="item__property"><span>date_created:</span> {{ .DateCreated }}</div>
+					<div class="item__property"><span>oof_shred:</span> {{ .OofShred }}</div>
+				</div>
+				{{ end }}
+			</div>
+		</div>
+		{{ template "footer" }}
+	</div>
+</body>
+
+</html>
+{{ end }}
